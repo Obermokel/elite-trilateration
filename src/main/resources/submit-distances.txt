@@ -1,0 +1,18 @@
+# api-v1/submit-distances?commanderName=" + urlEncode(commanderName) + "&apiKey=" + apiKey
+api-v1/submit-distances
+
+{ 
+	"data" : {
+		"ver" : 2,
+		"commander" : "Mokel",
+		"fromSoftware" : "EDD",
+		"fromSoftwareVersion" : "1.0.0",
+		"p0" : {
+			"name" : "fromSystemName"
+		},
+		"refs" : [ 
+			{ "name" : "toSystemName", "dist" : "0.00" },
+			...
+		]
+	}
+}

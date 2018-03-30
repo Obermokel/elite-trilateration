@@ -16,8 +16,8 @@ import borg.ed.universe.util.GsonCoord;
 
 public class AhkGenerator {
 
-	public static final String MY_SYSTEM = "3 Geminorum";
-	public static final Coord MY_COORD = new Coord(1996.31f, 587.56f, -14027.53f);
+	public static final String MY_SYSTEM = "Syreadiae JX-F c0";
+	public static final Coord MY_COORD = new Coord(-9529.44f, -64.5f, -7428.44f);
 
 	private static final Gson GSON = new GsonBuilder()
 			//.registerTypeAdapter(ZonedDateTime.class, new GsonZonedDateTime())
@@ -43,18 +43,26 @@ public class AhkGenerator {
 			}
 		}
 
-		String unknownSystemsString = "UnknownSystems := {\n";
+		String unknownSystemsString = "UnknownSystems := {";
 		Iterator<UnknownSystem> it = unknownSystems.iterator();
+		int nSelected = 0;
 		while (it.hasNext()) {
 			UnknownSystem us = it.next();
-			unknownSystemsString += "    \"" + us.getName() + "\" : " + (int) us.getEstimatedCoordinates().distanceTo(MY_COORD) + "";
-			if (it.hasNext()) {
-				unknownSystemsString += ",";
+			if (us.getName().contains("\"") || us.getName().contains("'")) {
+				System.out.println(us.getName());
+			} else if (Math.random() >= 0.02) {
+
+			} else {
+				nSelected++;
+				unknownSystemsString += " \"" + us.getName() + "\" : " + (int) us.getEstimatedCoordinates().distanceTo(MY_COORD) + "";
+				if (it.hasNext()) {
+					unknownSystemsString += ",";
+				}
 			}
-			unknownSystemsString += "\n";
 		}
-		unknownSystemsString += "}";
+		unknownSystemsString += " }";
 		System.out.println(String.format(Locale.US, "%,d of %,d are already estimated", nEstimated, nUnknown));
+		System.out.println(String.format(Locale.US, "%,d selected", nSelected));
 
 		System.out.println(unknownSystemsString);
 	}
