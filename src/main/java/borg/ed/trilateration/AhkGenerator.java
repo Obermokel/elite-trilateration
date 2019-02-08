@@ -11,8 +11,8 @@ import org.apache.commons.io.FileUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import borg.ed.universe.data.Coord;
-import borg.ed.universe.util.GsonCoord;
+import borg.ed.galaxy.data.Coord;
+import borg.ed.galaxy.util.GsonCoord;
 
 public class AhkGenerator {
 

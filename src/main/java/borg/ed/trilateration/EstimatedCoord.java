@@ -1,6 +1,6 @@
 package borg.ed.trilateration;
 
-import borg.ed.universe.data.Coord;
+import borg.ed.galaxy.data.Coord;
 
 public class EstimatedCoord extends Coord {
 
